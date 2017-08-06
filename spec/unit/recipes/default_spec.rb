@@ -6,6 +6,7 @@
 
 require 'spec_helper'
 
+=begin
 describe 'myhttpd::default' do
   context 'When all attributes are default, on an Ubuntu 16.04' do
     let(:chef_run) do
@@ -17,6 +18,33 @@ describe 'myhttpd::default' do
 
     it 'converges successfully' do
       expect { chef_run }.to_not raise_error
+    end
+  end
+end
+=end
+
+describe 'myhttpd::default' do
+  context 'When all attributes are default, on an unspecified platform' do
+    let(:chef_run) do
+      runner = ChefSpec::ServerRunner.new
+      runner.converge(described_recipe)
+    end
+
+
+    it 'installs the correct package' do
+      expect(chef_run).to install_package('httpd')
+    end
+
+    it 'creates an motd file' do
+      expect(chef_run).to create_template('/etc/motd')
+    end
+
+    it 'starts the service' do
+      expect(chef_run).to start_service('httpd')
+    end
+
+    it 'enables the service' do
+      expect(chef_run).to enable_service('httpd')
     end
   end
 end

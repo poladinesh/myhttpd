@@ -18,8 +18,8 @@ platforms:
 suites:
   - name: default
     run_list:
-      - role[web]
-      #- recipe[myhttpd::default]
+      - role[role]
+    #  - recipe[myhttpd::default]
     verifier:
       inspec_tests:
         - test/smoke/default

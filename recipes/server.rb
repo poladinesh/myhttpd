@@ -4,7 +4,7 @@
 #
 # Copyright:: 2017, The Authors, All Rights Reserved.
 
-node.default["attribute"] = "from the recipe file"
+node.default["myhttpd"]["attribute"] = "from the recipe file"
 
 #puts node.default["attribute"]
 
@@ -12,6 +12,14 @@ package 'httpd'
 
 service 'httpd' do
   action [:enable, :start]
+end
+
+#file '/var/www/html/index.html' do
+#  content 'Hello, world!'
+#end
+
+template '/var/www/html/index.html' do
+  source 'index.html.erb'
 end
 
 template '/etc/motd' do

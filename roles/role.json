@@ -1,0 +1,20 @@
+{
+  "name": "role",
+  "description": "",
+  "json_class": "Chef::Role",
+  "default_attributes": {
+    "myhttpd": {
+      "attribute": "i am from role file"
+    }
+  },
+  "override_attributes": {
+
+  },
+  "chef_type": "role",
+  "run_list": [
+    "recipe[myhttpd]"
+  ],
+  "env_run_lists": {
+
+  }
+}
